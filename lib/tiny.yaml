@@ -42,15 +42,6 @@ parameters:
 
 
 resources:
-  wait_condition:
-    type: OS::Heat::WaitCondition
-    properties:
-      handle: { get_resource: wh }
-      count: 1
-      timeout: 600
-
-  wh:
-    type: OS::Heat::WaitConditionHandle
 
   security_group:
       type: OS::Neutron::SecurityGroup
@@ -84,7 +75,6 @@ resources:
             database_user: { get_param: database_user }
             database_name: { get_param: database_name }
             database_pass: { get_param: database_pass }
-            wc_notify: { get_attr: ['wh', 'curl_cli'] }
           template: |
             #!/bin/bash -ex
 
@@ -170,9 +160,6 @@ resources:
             rm -f /etc/nginx/sites-enabled/default
             ln -s /etc/nginx/sites-available/tiny /etc/nginx/sites-enabled/
             service nginx restart
-
-            # let Heat know we are done
-            wc_notify --data-binary '{"status": "SUCCESS"}'
 
 outputs:
   name:
