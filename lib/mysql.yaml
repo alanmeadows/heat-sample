@@ -105,6 +105,7 @@ resources:
             SET PASSWORD FOR '__database_user__'@'%'=PASSWORD("__database_password__");
             GRANT ALL PRIVILEGES ON __database_name__.* TO '__database_user__'@'%' IDENTIFIED BY '__database_password__';
             FLUSH PRIVILEGES;
+            USE __database_name__;
             CREATE TABLE counttable ( count int(11) NOT NULL );
             INSERT into counttable values(0);
             EOF
