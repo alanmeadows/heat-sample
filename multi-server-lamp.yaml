@@ -42,7 +42,7 @@ resources:
       image: { get_param: image }
       flavor: { get_param: flavor }
       key: { get_param: key }
-      private_network: { get_param: private_network }
+      private_network: { get_attr: [network, name] }
       database_name: tinydb
       database_user: tinydb_user
 

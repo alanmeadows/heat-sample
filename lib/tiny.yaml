@@ -23,6 +23,23 @@ parameters:
     label: Private network name or ID
     description: Network to attach server to.
     default: private
+  database_host:
+    type: string
+    label: Database host
+    description: Database hostname for this app server
+  database_name:
+    type: string
+    label: Database name
+    description: Database name for this app server
+  database_user:
+    type: string
+    label: Database user
+    description: Database host user for this app server
+  database_pass:
+    type: string
+    label: Database pass
+    description: Database pass for this app server
+
 
 resources:
   wait_condition:
