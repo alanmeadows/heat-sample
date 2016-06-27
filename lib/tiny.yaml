@@ -80,6 +80,10 @@ resources:
       user_data:
         str_replace:
           params:
+            database_host: { get_param: database_host }
+            database_user: { get_param: database_user }
+            database_name: { get_param: database_name }
+            database_pass: { get_param: database_pass }
             wc_notify: { get_attr: ['wh', 'curl_cli'] }
           template: |
             #!/bin/bash -ex
