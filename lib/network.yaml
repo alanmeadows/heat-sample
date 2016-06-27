@@ -13,11 +13,6 @@ parameters:
     label: CIDR
     description: The CIDR of the private network.
     default: '10.10.10.0/24'
-  dns:
-    type: comma_delimited_list
-    label: DNS nameservers
-    description: Comma separated list of DNS nameservers for the private network.
-    default: '8.8.8.8,4.2.2.2'
 
 resources:
 
@@ -29,7 +24,6 @@ resources:
     properties:
       network_id: { get_resource: private_network }
       cidr: 10.10.10.0/24
-      dns_nameservers: { get_param: dns }
 
   router:
     type: OS::Neutron::Router
